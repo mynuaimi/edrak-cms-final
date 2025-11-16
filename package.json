@@ -1,8 +1,5 @@
-"scripts": {
-  "heroku-build": "yarn install --production=false && NODE_ENV=production yarn build",
-  "heroku-start": "NODE_ENV=production yarn start",
-  "build": "strapi build",
-  "develop": "strapi develop",
-  "start": "strapi start",
-  "strapi": "strapi"
-},
+{
+  "name": "edrak-cms-backend",
+  "private": true,
+  "version": "0.1.0"
+}
