@@ -1,23 +1,21 @@
-// config/database.ts
 const { parse } = require('pg-connection-string');
 
 module.exports = ({ env }) => {
   const dbUrl = env('DATABASE_URL');
 
-  // If DATABASE_URL is not defined, fallback to SQLite (for local dev or CI)
+  console.log('*** Strapi DB config – DATABASE_URL =', dbUrl);
+
   if (!dbUrl) {
-    return {
-      connection: {
-        client: 'sqlite',
-        connection: {
-          filename: env('DATABASE_FILENAME', '.tmp/data.db'),
-        },
-        useNullAsDefault: true,
-      },
-    };
+    console.error('*** Strapi DB config – ERROR: DATABASE_URL is missing!');
+    // You can either throw or fallback to sqlite. For now, let’s throw so it's obvious.
+    throw new Error('DATABASE_URL is not defined in environment');
   }
 
   const config = parse(dbUrl);
+
+  console.log('*** Strapi DB config – parsed host =', config.host);
+  console.log('*** Strapi DB config – parsed port =', config.port);
+  console.log('*** Strapi DB config – parsed database =', config.database);
 
   return {
     connection: {
@@ -29,7 +27,6 @@ module.exports = ({ env }) => {
         user: config.user,
         password: config.password,
         ssl: {
-          // DigitalOcean managed Postgres usually needs SSL
           rejectUnauthorized: false,
         },
       },
