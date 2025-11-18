@@ -2,21 +2,34 @@
 const { parse } = require('pg-connection-string');
 
 module.exports = ({ env }) => {
-  // Parse the DATABASE_URL environment variable
-  const { host, port, database, user, password } = parse(env('DATABASE_URL'));
+  // If a DATABASE_URL is provided, parse it and use PostgreSQL
+  if (env('DATABASE_URL')) {
+    const { host, port, database, user, password } = parse(env('DATABASE_URL'));
 
+    return {
+      connection: {
+        client: 'postgres',
+        connection: {
+          host,
+          port,
+          database,
+          user,
+          password,
+          ssl: { rejectUnauthorized: false }, 
+        },
+      },
+    }
+  }
+
+  // Fallback for build-time or local development:
+  // Use a simple SQLite database
   return {
     connection: {
-      client: 'postgres',
+      client: 'sqlite',
       connection: {
-        host,
-        port,
-        database,
-        user,
-        password,
-        // Use SSL but do not reject self-signed certificates
-        ssl: { rejectUnauthorized: false }, 
+        filename: env('DATABASE_FILENAME', '.tmp/data.db'),
       },
+      useNullAsDefault: true,
     },
-  }
+  };
 };
