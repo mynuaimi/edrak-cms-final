@@ -4,28 +4,24 @@ module.exports = ({ env }) => ({
     config: {
       provider: 'aws-s3',
       providerOptions: {
-        // Optional CDN / custom domain for files
-        baseUrl: env('CDN_URL'),          // e.g. https://your-space-name.ams3.cdn.digitaloceanspaces.com
+        // Public base URL (optional, but great for DO Spaces + CDN)
+        baseUrl: env('CDN_URL'),
         rootPath: env('CDN_ROOT_PATH', ''),
 
         s3Options: {
-          // For DigitalOcean Spaces: keep endpoint
-          // For real AWS S3: you can remove endpoint or leave it empty
-          endpoint: env('AWS_ENDPOINT'),  // e.g. https://ams3.digitaloceanspaces.com
+          endpoint: env('AWS_ENDPOINT'), // e.g. https://fra1.digitaloceanspaces.com
+          region: env('AWS_REGION', 'fra1'),
 
           credentials: {
             accessKeyId: env('AWS_ACCESS_KEY_ID'),
             secretAccessKey: env('AWS_ACCESS_SECRET'),
           },
 
-          region: env('AWS_REGION'),
-
           params: {
-            ACL: env('AWS_ACL', 'public-read'),
-            signedUrlExpires: env.int
-              ? env.int('AWS_SIGNED_URL_EXPIRES', 15 * 60)
-              : parseInt(env('AWS_SIGNED_URL_EXPIRES', 15 * 60), 10),
             Bucket: env('AWS_BUCKET'),
+            ACL: env('AWS_ACL', 'public-read'),
+            // 15 minutes default signed URL expiry
+            signedUrlExpires: parseInt(env('AWS_SIGNED_URL_EXPIRES', 15 * 60), 10),
           },
         },
       },
