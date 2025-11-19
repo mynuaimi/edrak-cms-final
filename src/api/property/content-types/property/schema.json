@@ -39,7 +39,7 @@
         }
       }
     },
-    "Avilability": {
+    "Availability": {
       "type": "enumeration",
       "pluginOptions": {
         "i18n": {

@@ -488,7 +488,7 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    Avilability: Schema.Attribute.Enumeration<['Available', 'Rented']> &
+    Availability: Schema.Attribute.Enumeration<['Available', 'Rented']> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
