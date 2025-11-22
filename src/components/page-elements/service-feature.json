@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_page_elements_service_features",
+  "info": {
+    "displayName": "Service Feature"
+  },
+  "options": {},
+  "attributes": {
+    "FeatureText": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

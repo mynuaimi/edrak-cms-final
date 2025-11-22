@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_page_elements_service_sections",
+  "info": {
+    "displayName": "Service Section"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Features": {
+      "type": "component",
+      "component": "page-elements.service-feature",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
