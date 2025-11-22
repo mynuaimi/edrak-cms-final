@@ -770,7 +770,25 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    Area: Schema.Attribute.Decimal &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     Availability: Schema.Attribute.Enumeration<['Available', 'Rented']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Bathrooms: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Bedrooms: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -779,10 +797,13 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Gallery: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    > &
+    Description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Gallery: Schema.Attribute.Media<'images' | 'videos', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -794,6 +815,12 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
       'api::property.property'
     >;
     Location: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Period: Schema.Attribute.Enumeration<['Yearly', 'Monthly']> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
