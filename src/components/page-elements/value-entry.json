@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_page_elements_value_items",
+  "collectionName": "components_page_elements_value_entries",
   "info": {
-    "displayName": "Value Item"
+    "displayName": "ValueEntry"
   },
   "options": {},
   "attributes": {
@@ -11,14 +11,7 @@
     "Description": {
       "type": "text"
     },
-    "Icon": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "IconImage": {
+    "ImageIcon": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [

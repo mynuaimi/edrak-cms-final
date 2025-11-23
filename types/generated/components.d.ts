@@ -23,15 +23,14 @@ export interface PageElementsServiceSection extends Struct.ComponentSchema {
   };
 }
 
-export interface PageElementsValueItem extends Struct.ComponentSchema {
-  collectionName: 'components_page_elements_value_items';
+export interface PageElementsValueEntry extends Struct.ComponentSchema {
+  collectionName: 'components_page_elements_value_entries';
   info: {
-    displayName: 'Value Item';
+    displayName: 'ValueEntry';
   };
   attributes: {
     Description: Schema.Attribute.Text;
-    Icon: Schema.Attribute.Media<'images'>;
-    IconImage: Schema.Attribute.Media<'images'>;
+    ImageIcon: Schema.Attribute.Media<'images'>;
     Title: Schema.Attribute.String;
   };
 }
@@ -52,7 +51,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'page-elements.service-feature': PageElementsServiceFeature;
       'page-elements.service-section': PageElementsServiceSection;
-      'page-elements.value-item': PageElementsValueItem;
+      'page-elements.value-entry': PageElementsValueEntry;
       'shared.menu-link': SharedMenuLink;
     }
   }

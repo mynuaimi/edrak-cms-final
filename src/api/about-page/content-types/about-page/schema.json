@@ -59,14 +59,14 @@
         "images"
       ]
     },
-    "CoreValues": {
+    "OurValues": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "page-elements.value-item",
+      "component": "page-elements.value-entry",
       "repeatable": true
     }
   }
