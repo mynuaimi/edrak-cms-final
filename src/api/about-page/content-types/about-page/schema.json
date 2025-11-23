@@ -59,6 +59,14 @@
         "images"
       ]
     },
+    "ValuesTitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "OurValues": {
       "type": "component",
       "pluginOptions": {
