@@ -31,6 +31,7 @@ export interface PageElementsValueItem extends Struct.ComponentSchema {
   attributes: {
     Description: Schema.Attribute.Text;
     Icon: Schema.Attribute.Media<'images'>;
+    IconImage: Schema.Attribute.Media<'images'>;
     Title: Schema.Attribute.String;
   };
 }

@@ -17,6 +17,13 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "IconImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   },
   "config": {}
