@@ -503,6 +503,105 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiBuildingTypeBuildingType
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'building_types';
+  info: {
+    displayName: 'building-type';
+    pluralName: 'building-types';
+    singularName: 'building-type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    buildings: Schema.Attribute.Relation<'oneToMany', 'api::building.building'>;
+    code: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    label: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::building-type.building-type'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiBuildingBuilding extends Struct.CollectionTypeSchema {
+  collectionName: 'buildings';
+  info: {
+    displayName: 'Building';
+    pluralName: 'buildings';
+    singularName: 'building';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bldgCode: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    bldgErpId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    bldgNameAr: Schema.Attribute.String & Schema.Attribute.Required;
+    bldgNameEn: Schema.Attribute.String & Schema.Attribute.Required;
+    BldgTotalApartmentUnits: Schema.Attribute.Integer;
+    bldgTotalFloors: Schema.Attribute.Integer;
+    bldgTotalParkingSpots: Schema.Attribute.Integer;
+    bldgTotalRentableUnits: Schema.Attribute.Integer;
+    bldgTotalShopUnits: Schema.Attribute.Integer;
+    bldgUsableFloors: Schema.Attribute.Integer;
+    buildingType: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::building-type.building-type'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    landlord: Schema.Attribute.Relation<'manyToOne', 'api::landlord.landlord'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::building.building'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    recordStatus: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::record-status.record-status'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
   collectionName: 'contact_pages';
   info: {
@@ -625,6 +724,53 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
       'api::homepage.homepage'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLandlordLandlord extends Struct.CollectionTypeSchema {
+  collectionName: 'landlords';
+  info: {
+    displayName: 'Landlord';
+    pluralName: 'landlords';
+    singularName: 'landlord';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    buildings: Schema.Attribute.Relation<'oneToMany', 'api::building.building'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    LndCode: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    lndErpId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    lndFtaNumber: Schema.Attribute.String & Schema.Attribute.Unique;
+    lndNameAr: Schema.Attribute.String & Schema.Attribute.Required;
+    lndNameEn: Schema.Attribute.String & Schema.Attribute.Required;
+    lndUaeIdNumber: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 15;
+      }>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::landlord.landlord'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    recordStatus: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::record-status.record-status'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -849,6 +995,55 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRecordStatusRecordStatus
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'record_statuses';
+  info: {
+    displayName: 'Record Status';
+    pluralName: 'record-statuses';
+    singularName: 'record-status';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    buildings: Schema.Attribute.Relation<'oneToMany', 'api::building.building'>;
+    code: Schema.Attribute.UID &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    label: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    landlords: Schema.Attribute.Relation<'oneToMany', 'api::landlord.landlord'>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::record-status.record-status'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1436,12 +1631,16 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about-page.about-page': ApiAboutPageAboutPage;
+      'api::building-type.building-type': ApiBuildingTypeBuildingType;
+      'api::building.building': ApiBuildingBuilding;
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::homepage.homepage': ApiHomepageHomepage;
+      'api::landlord.landlord': ApiLandlordLandlord;
       'api::main-menu.main-menu': ApiMainMenuMainMenu;
       'api::properties-page.properties-page': ApiPropertiesPagePropertiesPage;
       'api::property-type.property-type': ApiPropertyTypePropertyType;
       'api::property.property': ApiPropertyProperty;
+      'api::record-status.record-status': ApiRecordStatusRecordStatus;
       'api::services-page.services-page': ApiServicesPageServicesPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

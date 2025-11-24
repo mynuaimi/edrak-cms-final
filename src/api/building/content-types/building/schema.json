@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "buildings",
+  "info": {
+    "singularName": "building",
+    "pluralName": "buildings",
+    "displayName": "Building"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bldgCode": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "bldgErpId": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "bldgNameEn": {
+      "type": "string",
+      "required": true
+    },
+    "bldgNameAr": {
+      "type": "string",
+      "required": true
+    },
+    "buildingType": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::building-type.building-type",
+      "inversedBy": "buildings"
+    },
+    "landlord": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::landlord.landlord",
+      "inversedBy": "buildings"
+    },
+    "bldgTotalFloors": {
+      "type": "integer"
+    },
+    "bldgUsableFloors": {
+      "type": "integer"
+    },
+    "bldgTotalRentableUnits": {
+      "type": "integer"
+    },
+    "BldgTotalApartmentUnits": {
+      "type": "integer"
+    },
+    "bldgTotalShopUnits": {
+      "type": "integer"
+    },
+    "bldgTotalParkingSpots": {
+      "type": "integer"
+    },
+    "recordStatus": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::record-status.record-status",
+      "inversedBy": "buildings"
+    }
+  }
+}

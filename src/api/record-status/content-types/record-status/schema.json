@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "record_statuses",
+  "info": {
+    "singularName": "record-status",
+    "pluralName": "record-statuses",
+    "displayName": "Record Status"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "code": {
+      "type": "uid",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "unique": true
+    },
+    "landlords": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::landlord.landlord",
+      "mappedBy": "recordStatus"
+    },
+    "buildings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::building.building",
+      "mappedBy": "recordStatus"
+    }
+  }
+}
