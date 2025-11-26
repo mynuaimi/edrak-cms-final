@@ -808,6 +808,203 @@ export interface ApiMainMenuMainMenu extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiMstrTenantMstrTenant extends Struct.CollectionTypeSchema {
+  collectionName: 'mstr_tenants';
+  info: {
+    displayName: 'Mstr Tenant';
+    pluralName: 'mstr-tenants';
+    singularName: 'mstr-tenant';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-tenant.mstr-tenant'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    tenantType: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::ref-tenant-type.ref-tenant-type'
+    >;
+    tntCode: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    tntErpId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    tntLicenseNumber: Schema.Attribute.String;
+    tntNameAr: Schema.Attribute.String;
+    tntNameEn: Schema.Attribute.String & Schema.Attribute.Required;
+    tntRecordStatus: Schema.Attribute.Enumeration<['Active', 'Inactive']>;
+    tntUaeIdNumber: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 15;
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMstrUnitApartmentMstrUnitApartment
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'mstr_unit_apartments';
+  info: {
+    displayName: 'Mstr Unit Apartment';
+    pluralName: 'mstr-unit-apartments';
+    singularName: 'mstr-unit-apartment';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    aptBathrooms: Schema.Attribute.Decimal;
+    aptFloors: Schema.Attribute.Integer;
+    aptRooms: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-unit-apartment.mstr-unit-apartment'
+    > &
+      Schema.Attribute.Private;
+    mstr_unit_shop: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::mstr-unit-shop.mstr-unit-shop'
+    >;
+    mstr_unit_villa: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::mstr-unit-villa.mstr-unit-villa'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    ref_apartment_type: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::ref-apartment-type.ref-apartment-type'
+    >;
+    unit: Schema.Attribute.Relation<'oneToOne', 'api::mstr-unit.mstr-unit'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMstrUnitShopMstrUnitShop
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'mstr_unit_shops';
+  info: {
+    displayName: 'Mstr Unit Shop';
+    pluralName: 'mstr-unit-shops';
+    singularName: 'mstr-unit-shop';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-unit-shop.mstr-unit-shop'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    shopDoors: Schema.Attribute.Integer;
+    shopFloors: Schema.Attribute.Decimal;
+    unit: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::mstr-unit-apartment.mstr-unit-apartment'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMstrUnitVillaMstrUnitVilla
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'mstr_unit_villas';
+  info: {
+    displayName: 'Mstr Unit Villa';
+    pluralName: 'mstr-unit-villas';
+    singularName: 'mstr-unit-villa';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-unit-villa.mstr-unit-villa'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    unit: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::mstr-unit-apartment.mstr-unit-apartment'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    villaBathrooms: Schema.Attribute.Decimal;
+    villaFloors: Schema.Attribute.Integer;
+    villaRooms: Schema.Attribute.Integer;
+  };
+}
+
+export interface ApiMstrUnitMstrUnit extends Struct.CollectionTypeSchema {
+  collectionName: 'mstr_units';
+  info: {
+    displayName: 'Mstr Unit';
+    pluralName: 'mstr-units';
+    singularName: 'mstr-unit';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-unit.mstr-unit'
+    > &
+      Schema.Attribute.Private;
+    mstr_unit_apartment: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::mstr-unit-apartment.mstr-unit-apartment'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    ref_leasing_status: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::ref-leasing-status.ref-leasing-status'
+    >;
+    unitCode: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    unitName: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPropertiesPagePropertiesPage
   extends Struct.SingleTypeSchema {
   collectionName: 'properties_pages';
@@ -989,6 +1186,234 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRefApartmentTypeRefApartmentType
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'ref_apartment_types';
+  info: {
+    displayName: 'Ref Apartment Type';
+    pluralName: 'ref-apartment-types';
+    singularName: 'ref-apartment-type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    code: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    label: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ref-apartment-type.ref-apartment-type'
+    >;
+    mstr_unit_apartments: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-unit-apartment.mstr-unit-apartment'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRefLeasingStatusRefLeasingStatus
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'ref_leasing_statuses';
+  info: {
+    displayName: 'Ref Leasing Status';
+    pluralName: 'ref-leasing-statuses';
+    singularName: 'ref-leasing-status';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    code: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    label: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ref-leasing-status.ref-leasing-status'
+    >;
+    mstr_units: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-unit.mstr-unit'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRefNationalityRefNationality
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'ref_nationalities';
+  info: {
+    displayName: 'Ref Nationality';
+    pluralName: 'ref-nationalities';
+    singularName: 'ref-nationality';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    areaCode: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    code: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    country: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    countryCode: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    flagIcon: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ref-nationality.ref-nationality'
+    >;
+    nationalityLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRefTenantTypeRefTenantType
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'ref_tenant_types';
+  info: {
+    displayName: 'Ref Tenant Type';
+    pluralName: 'ref-tenant-types';
+    singularName: 'ref-tenant-type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    code: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    label: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ref-tenant-type.ref-tenant-type'
+    >;
+    mstr_tenants: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-tenant.mstr-tenant'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1582,9 +2007,18 @@ declare module '@strapi/strapi' {
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::landlord.landlord': ApiLandlordLandlord;
       'api::main-menu.main-menu': ApiMainMenuMainMenu;
+      'api::mstr-tenant.mstr-tenant': ApiMstrTenantMstrTenant;
+      'api::mstr-unit-apartment.mstr-unit-apartment': ApiMstrUnitApartmentMstrUnitApartment;
+      'api::mstr-unit-shop.mstr-unit-shop': ApiMstrUnitShopMstrUnitShop;
+      'api::mstr-unit-villa.mstr-unit-villa': ApiMstrUnitVillaMstrUnitVilla;
+      'api::mstr-unit.mstr-unit': ApiMstrUnitMstrUnit;
       'api::properties-page.properties-page': ApiPropertiesPagePropertiesPage;
       'api::property-type.property-type': ApiPropertyTypePropertyType;
       'api::property.property': ApiPropertyProperty;
+      'api::ref-apartment-type.ref-apartment-type': ApiRefApartmentTypeRefApartmentType;
+      'api::ref-leasing-status.ref-leasing-status': ApiRefLeasingStatusRefLeasingStatus;
+      'api::ref-nationality.ref-nationality': ApiRefNationalityRefNationality;
+      'api::ref-tenant-type.ref-tenant-type': ApiRefTenantTypeRefTenantType;
       'api::services-page.services-page': ApiServicesPageServicesPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mstr_unit_villas",
+  "info": {
+    "singularName": "mstr-unit-villa",
+    "pluralName": "mstr-unit-villas",
+    "displayName": "Mstr Unit Villa"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "unit": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mstr-unit-apartment.mstr-unit-apartment",
+      "inversedBy": "mstr_unit_villa"
+    },
+    "villaRooms": {
+      "type": "integer"
+    },
+    "villaBathrooms": {
+      "type": "decimal"
+    },
+    "villaFloors": {
+      "type": "integer"
+    }
+  }
+}

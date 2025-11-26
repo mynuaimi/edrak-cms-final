@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mstr_unit_shops",
+  "info": {
+    "singularName": "mstr-unit-shop",
+    "pluralName": "mstr-unit-shops",
+    "displayName": "Mstr Unit Shop"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "unit": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mstr-unit-apartment.mstr-unit-apartment",
+      "inversedBy": "mstr_unit_shop"
+    },
+    "shopDoors": {
+      "type": "integer"
+    },
+    "shopFloors": {
+      "type": "decimal"
+    }
+  }
+}

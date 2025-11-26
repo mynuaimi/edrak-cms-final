@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ref_apartment_types",
+  "info": {
+    "singularName": "ref-apartment-type",
+    "pluralName": "ref-apartment-types",
+    "displayName": "Ref Apartment Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "code": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "unique": true
+    },
+    "label": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "unique": true
+    },
+    "mstr_unit_apartments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mstr-unit-apartment.mstr-unit-apartment",
+      "mappedBy": "ref_apartment_type"
+    }
+  }
+}

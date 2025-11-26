@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mstr_tenants",
+  "info": {
+    "singularName": "mstr-tenant",
+    "pluralName": "mstr-tenants",
+    "displayName": "Mstr Tenant"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tntCode": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "tntErpId": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "tenantType": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::ref-tenant-type.ref-tenant-type",
+      "inversedBy": "mstr_tenants"
+    },
+    "tntNameEn": {
+      "type": "string",
+      "required": true
+    },
+    "tntNameAr": {
+      "type": "string"
+    },
+    "tntUaeIdNumber": {
+      "type": "string",
+      "maxLength": 15
+    },
+    "tntLicenseNumber": {
+      "type": "string"
+    },
+    "tntRecordStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Active",
+        "Inactive"
+      ]
+    }
+  }
+}

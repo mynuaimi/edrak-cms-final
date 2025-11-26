@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ref_tenant_types",
+  "info": {
+    "singularName": "ref-tenant-type",
+    "pluralName": "ref-tenant-types",
+    "displayName": "Ref Tenant Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "code": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "unique": true
+    },
+    "label": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "unique": true
+    },
+    "mstr_tenants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mstr-tenant.mstr-tenant",
+      "mappedBy": "tenantType"
+    }
+  }
+}

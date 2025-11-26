@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mstr_units",
+  "info": {
+    "singularName": "mstr-unit",
+    "pluralName": "mstr-units",
+    "displayName": "Mstr Unit"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "unitCode": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "unitName": {
+      "type": "string",
+      "required": true
+    },
+    "ref_leasing_status": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::ref-leasing-status.ref-leasing-status",
+      "inversedBy": "mstr_units"
+    },
+    "mstr_unit_apartment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mstr-unit-apartment.mstr-unit-apartment",
+      "inversedBy": "unit"
+    }
+  }
+}

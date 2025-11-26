@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ref_leasing_statuses",
+  "info": {
+    "singularName": "ref-leasing-status",
+    "pluralName": "ref-leasing-statuses",
+    "displayName": "Ref Leasing Status"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "code": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "required": true,
+      "unique": true
+    },
+    "label": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "unique": true
+    },
+    "mstr_units": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mstr-unit.mstr-unit",
+      "mappedBy": "ref_leasing_status"
+    }
+  }
+}
