@@ -11,7 +11,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "LndCode": {
+    "lndCode": {
       "type": "string",
       "required": true,
       "unique": true,
@@ -41,17 +41,18 @@
       "required": false,
       "unique": true
     },
-    "recordStatus": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::record-status.record-status",
-      "inversedBy": "landlords"
-    },
     "buildings": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::building.building",
       "mappedBy": "landlord"
+    },
+    "lndRecordStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Active",
+        "Inactive"
+      ]
     }
   }
 }

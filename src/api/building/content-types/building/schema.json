@@ -59,11 +59,12 @@
     "bldgTotalParkingSpots": {
       "type": "integer"
     },
-    "recordStatus": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::record-status.record-status",
-      "inversedBy": "buildings"
+    "bldgRecordStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Active",
+        "Inactive"
+      ]
     }
   }
 }

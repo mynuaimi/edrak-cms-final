@@ -571,6 +571,7 @@ export interface ApiBuildingBuilding extends Struct.CollectionTypeSchema {
       Schema.Attribute.Unique;
     bldgNameAr: Schema.Attribute.String & Schema.Attribute.Required;
     bldgNameEn: Schema.Attribute.String & Schema.Attribute.Required;
+    bldgRecordStatus: Schema.Attribute.Enumeration<['Active', 'Inactive']>;
     BldgTotalApartmentUnits: Schema.Attribute.Integer;
     bldgTotalFloors: Schema.Attribute.Integer;
     bldgTotalParkingSpots: Schema.Attribute.Integer;
@@ -592,10 +593,6 @@ export interface ApiBuildingBuilding extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    recordStatus: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::record-status.record-status'
-    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -745,7 +742,7 @@ export interface ApiLandlordLandlord extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    LndCode: Schema.Attribute.String &
+    lndCode: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     lndErpId: Schema.Attribute.String &
@@ -754,6 +751,7 @@ export interface ApiLandlordLandlord extends Struct.CollectionTypeSchema {
     lndFtaNumber: Schema.Attribute.String & Schema.Attribute.Unique;
     lndNameAr: Schema.Attribute.String & Schema.Attribute.Required;
     lndNameEn: Schema.Attribute.String & Schema.Attribute.Required;
+    lndRecordStatus: Schema.Attribute.Enumeration<['Active', 'Inactive']>;
     lndUaeIdNumber: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -767,10 +765,6 @@ export interface ApiLandlordLandlord extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    recordStatus: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::record-status.record-status'
-    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -995,55 +989,6 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiRecordStatusRecordStatus
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'record_statuses';
-  info: {
-    displayName: 'Record Status';
-    pluralName: 'record-statuses';
-    singularName: 'record-status';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    buildings: Schema.Attribute.Relation<'oneToMany', 'api::building.building'>;
-    code: Schema.Attribute.UID &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    label: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    landlords: Schema.Attribute.Relation<'oneToMany', 'api::landlord.landlord'>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::record-status.record-status'
-    >;
-    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1640,7 +1585,6 @@ declare module '@strapi/strapi' {
       'api::properties-page.properties-page': ApiPropertiesPagePropertiesPage;
       'api::property-type.property-type': ApiPropertyTypePropertyType;
       'api::property.property': ApiPropertyProperty;
-      'api::record-status.record-status': ApiRecordStatusRecordStatus;
       'api::services-page.services-page': ApiServicesPageServicesPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
