@@ -1113,13 +1113,10 @@ export interface ApiMstrUnitShopMstrUnitShop
       'api::mstr-unit-shop.mstr-unit-shop'
     > &
       Schema.Attribute.Private;
-    mstr_unit: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::mstr-unit.mstr-unit'
-    >;
     publishedAt: Schema.Attribute.DateTime;
     shopDoors: Schema.Attribute.Integer;
     shopFloors: Schema.Attribute.Decimal;
+    unit: Schema.Attribute.Relation<'oneToOne', 'api::mstr-unit.mstr-unit'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1147,11 +1144,8 @@ export interface ApiMstrUnitVillaMstrUnitVilla
       'api::mstr-unit-villa.mstr-unit-villa'
     > &
       Schema.Attribute.Private;
-    mstr_unit: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::mstr-unit.mstr-unit'
-    >;
     publishedAt: Schema.Attribute.DateTime;
+    unit: Schema.Attribute.Relation<'oneToOne', 'api::mstr-unit.mstr-unit'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

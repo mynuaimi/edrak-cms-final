@@ -20,7 +20,7 @@
     "villaFloors": {
       "type": "integer"
     },
-    "mstr_unit": {
+    "unit": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::mstr-unit.mstr-unit",
