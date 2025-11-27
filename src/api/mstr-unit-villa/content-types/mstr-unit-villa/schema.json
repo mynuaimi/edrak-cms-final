@@ -19,6 +19,12 @@
     },
     "villaFloors": {
       "type": "integer"
+    },
+    "unit": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mstr-unit.mstr-unit",
+      "mappedBy": "mstr_unit_villa"
     }
   }
 }
