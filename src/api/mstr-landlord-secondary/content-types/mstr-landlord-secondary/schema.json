@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mstr_landlord_secondaries",
+  "info": {
+    "singularName": "mstr-landlord-secondary",
+    "pluralName": "mstr-landlord-secondaries",
+    "displayName": "Mstr Landlord Secondary"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "landlord": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::landlord.landlord",
+      "inversedBy": "mstr_landlord_secondary"
+    },
+    "lndUaeIdExpiry": {
+      "type": "date"
+    },
+    "lndPassportNumber": {
+      "type": "string"
+    },
+    "lndPassportExpiry": {
+      "type": "date"
+    },
+    "lndNationality": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::ref-nationality.ref-nationality",
+      "inversedBy": "mstr_landlord_secondaries"
+    },
+    "Phone1Area": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::ref-nationality.ref-nationality",
+      "inversedBy": "lndPhone1Area"
+    },
+    "lndPhone1Number": {
+      "type": "string"
+    },
+    "Phone2Area": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::ref-nationality.ref-nationality",
+      "inversedBy": "lndPhone2Area"
+    },
+    "lndPhone2Number": {
+      "type": "string"
+    },
+    "lndEmail": {
+      "type": "email"
+    }
+  }
+}

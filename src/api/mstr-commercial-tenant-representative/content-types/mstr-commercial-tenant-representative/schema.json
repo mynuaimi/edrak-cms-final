@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mstr_commercial_tenant_representatives",
+  "info": {
+    "singularName": "mstr-commercial-tenant-representative",
+    "pluralName": "mstr-commercial-tenant-representatives",
+    "displayName": "Mstr Commercial Tenant Representative"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "repUaeId": {
+      "type": "string",
+      "maxLength": 15
+    },
+    "repUaeIdExpiry": {
+      "type": "date"
+    },
+    "repEmail": {
+      "type": "email"
+    },
+    "PhoneArea": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::ref-nationality.ref-nationality",
+      "inversedBy": "repPhoneArea"
+    },
+    "repPhoneNumber": {
+      "type": "string"
+    },
+    "repRecordStatus": {
+      "type": "enumeration",
+      "required": true,
+      "default": "ACTIVE",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
+    "mstr_commercial_tenant_secondaries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mstr-commercial-tenant-secondary.mstr-commercial-tenant-secondary",
+      "mappedBy": "representative"
+    }
+  }
+}

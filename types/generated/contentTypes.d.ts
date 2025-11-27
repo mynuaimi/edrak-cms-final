@@ -764,6 +764,10 @@ export interface ApiLandlordLandlord extends Struct.CollectionTypeSchema {
       'api::landlord.landlord'
     > &
       Schema.Attribute.Private;
+    mstr_landlord_secondary: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::mstr-landlord-secondary.mstr-landlord-secondary'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -808,6 +812,193 @@ export interface ApiMainMenuMainMenu extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiMstrCommercialTenantRepresentativeMstrCommercialTenantRepresentative
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'mstr_commercial_tenant_representatives';
+  info: {
+    displayName: 'Mstr Commercial Tenant Representative';
+    pluralName: 'mstr-commercial-tenant-representatives';
+    singularName: 'mstr-commercial-tenant-representative';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-commercial-tenant-representative.mstr-commercial-tenant-representative'
+    > &
+      Schema.Attribute.Private;
+    mstr_commercial_tenant_secondaries: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-commercial-tenant-secondary.mstr-commercial-tenant-secondary'
+    >;
+    PhoneArea: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::ref-nationality.ref-nationality'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    repEmail: Schema.Attribute.Email;
+    repPhoneNumber: Schema.Attribute.String;
+    repRecordStatus: Schema.Attribute.Enumeration<['ACTIVE', 'INACTIVE']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'ACTIVE'>;
+    repUaeId: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 15;
+      }>;
+    repUaeIdExpiry: Schema.Attribute.Date;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMstrCommercialTenantSecondaryMstrCommercialTenantSecondary
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'mstr_commercial_tenant_secondaries';
+  info: {
+    displayName: 'Mstr Commercial Tenant Secondary';
+    pluralName: 'mstr-commercial-tenant-secondaries';
+    singularName: 'mstr-commercial-tenant-secondary';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-commercial-tenant-secondary.mstr-commercial-tenant-secondary'
+    > &
+      Schema.Attribute.Private;
+    phoneArea: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::ref-nationality.ref-nationality'
+    >;
+    phoneNumber: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    representative: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::mstr-commercial-tenant-representative.mstr-commercial-tenant-representative'
+    >;
+    tenant: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::mstr-tenant.mstr-tenant'
+    >;
+    tntEmail: Schema.Attribute.Email;
+    tntLicenseExpiry: Schema.Attribute.Date;
+    tntLicenseIssuePlace: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMstrLandlordSecondaryMstrLandlordSecondary
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'mstr_landlord_secondaries';
+  info: {
+    displayName: 'Mstr Landlord Secondary';
+    pluralName: 'mstr-landlord-secondaries';
+    singularName: 'mstr-landlord-secondary';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    landlord: Schema.Attribute.Relation<'oneToOne', 'api::landlord.landlord'>;
+    lndEmail: Schema.Attribute.Email;
+    lndNationality: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::ref-nationality.ref-nationality'
+    >;
+    lndPassportExpiry: Schema.Attribute.Date;
+    lndPassportNumber: Schema.Attribute.String;
+    lndPhone1Number: Schema.Attribute.String;
+    lndPhone2Number: Schema.Attribute.String;
+    lndUaeIdExpiry: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-landlord-secondary.mstr-landlord-secondary'
+    > &
+      Schema.Attribute.Private;
+    Phone1Area: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::ref-nationality.ref-nationality'
+    >;
+    Phone2Area: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::ref-nationality.ref-nationality'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMstrResidentialTenantSecondaryMstrResidentialTenantSecondary
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'mstr_residential_tenant_secondaries';
+  info: {
+    displayName: 'Mstr Residential Tenant Secondary';
+    pluralName: 'mstr-residential-tenant-secondaries';
+    singularName: 'mstr-residential-tenant-secondary';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-residential-tenant-secondary.mstr-residential-tenant-secondary'
+    > &
+      Schema.Attribute.Private;
+    nationality: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::ref-nationality.ref-nationality'
+    >;
+    Phone1AreaCode: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::ref-nationality.ref-nationality'
+    >;
+    phone2AreaCode: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::ref-nationality.ref-nationality'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    tenant: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::mstr-tenant.mstr-tenant'
+    >;
+    tntEmail: Schema.Attribute.Email;
+    tntPassportExpiry: Schema.Attribute.Date;
+    tntPassportNumber: Schema.Attribute.String;
+    tntPhone1Number: Schema.Attribute.String;
+    tntPhone2Number: Schema.Attribute.String;
+    tntUaeIdExpiry: Schema.Attribute.Date;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiMstrTenantMstrTenant extends Struct.CollectionTypeSchema {
   collectionName: 'mstr_tenants';
   info: {
@@ -828,6 +1019,14 @@ export interface ApiMstrTenantMstrTenant extends Struct.CollectionTypeSchema {
       'api::mstr-tenant.mstr-tenant'
     > &
       Schema.Attribute.Private;
+    mstr_commercial_tenant_secondary: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::mstr-commercial-tenant-secondary.mstr-commercial-tenant-secondary'
+    >;
+    mstr_residential_tenant_secondary: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::mstr-residential-tenant-secondary.mstr-residential-tenant-secondary'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     tenantType: Schema.Attribute.Relation<
       'manyToOne',
@@ -1350,10 +1549,30 @@ export interface ApiRefNationalityRefNationality
           localized: false;
         };
       }>;
+    lndPhone1Area: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-landlord-secondary.mstr-landlord-secondary'
+    >;
+    lndPhone2Area: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-landlord-secondary.mstr-landlord-secondary'
+    >;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::ref-nationality.ref-nationality'
+    >;
+    mstr_commercial_tenant_secondaries: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-commercial-tenant-secondary.mstr-commercial-tenant-secondary'
+    >;
+    mstr_landlord_secondaries: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-landlord-secondary.mstr-landlord-secondary'
+    >;
+    mstr_residential_tenant_secondaries: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-residential-tenant-secondary.mstr-residential-tenant-secondary'
     >;
     nationalityLabel: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
@@ -1362,6 +1581,18 @@ export interface ApiRefNationalityRefNationality
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    repPhoneArea: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-commercial-tenant-representative.mstr-commercial-tenant-representative'
+    >;
+    tntPhone1AreaCode: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-residential-tenant-secondary.mstr-residential-tenant-secondary'
+    >;
+    tntPhone2AreaCode: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-residential-tenant-secondary.mstr-residential-tenant-secondary'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -2007,6 +2238,10 @@ declare module '@strapi/strapi' {
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::landlord.landlord': ApiLandlordLandlord;
       'api::main-menu.main-menu': ApiMainMenuMainMenu;
+      'api::mstr-commercial-tenant-representative.mstr-commercial-tenant-representative': ApiMstrCommercialTenantRepresentativeMstrCommercialTenantRepresentative;
+      'api::mstr-commercial-tenant-secondary.mstr-commercial-tenant-secondary': ApiMstrCommercialTenantSecondaryMstrCommercialTenantSecondary;
+      'api::mstr-landlord-secondary.mstr-landlord-secondary': ApiMstrLandlordSecondaryMstrLandlordSecondary;
+      'api::mstr-residential-tenant-secondary.mstr-residential-tenant-secondary': ApiMstrResidentialTenantSecondaryMstrResidentialTenantSecondary;
       'api::mstr-tenant.mstr-tenant': ApiMstrTenantMstrTenant;
       'api::mstr-unit-apartment.mstr-unit-apartment': ApiMstrUnitApartmentMstrUnitApartment;
       'api::mstr-unit-shop.mstr-unit-shop': ApiMstrUnitShopMstrUnitShop;

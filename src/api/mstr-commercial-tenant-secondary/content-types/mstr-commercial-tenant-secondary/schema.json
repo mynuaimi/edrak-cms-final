@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mstr_commercial_tenant_secondaries",
+  "info": {
+    "singularName": "mstr-commercial-tenant-secondary",
+    "pluralName": "mstr-commercial-tenant-secondaries",
+    "displayName": "Mstr Commercial Tenant Secondary"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tenant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mstr-tenant.mstr-tenant",
+      "inversedBy": "mstr_commercial_tenant_secondary"
+    },
+    "representative": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mstr-commercial-tenant-representative.mstr-commercial-tenant-representative",
+      "inversedBy": "mstr_commercial_tenant_secondaries"
+    },
+    "tntLicenseIssuePlace": {
+      "type": "string"
+    },
+    "tntLicenseExpiry": {
+      "type": "date"
+    },
+    "phoneArea": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::ref-nationality.ref-nationality",
+      "inversedBy": "mstr_commercial_tenant_secondaries"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "tntEmail": {
+      "type": "email"
+    }
+  }
+}

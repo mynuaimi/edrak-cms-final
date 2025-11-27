@@ -70,6 +70,54 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "mstr_residential_tenant_secondaries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mstr-residential-tenant-secondary.mstr-residential-tenant-secondary",
+      "mappedBy": "nationality"
+    },
+    "tntPhone1AreaCode": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mstr-residential-tenant-secondary.mstr-residential-tenant-secondary",
+      "mappedBy": "Phone1AreaCode"
+    },
+    "tntPhone2AreaCode": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mstr-residential-tenant-secondary.mstr-residential-tenant-secondary",
+      "mappedBy": "phone2AreaCode"
+    },
+    "repPhoneArea": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mstr-commercial-tenant-representative.mstr-commercial-tenant-representative",
+      "mappedBy": "PhoneArea"
+    },
+    "mstr_commercial_tenant_secondaries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mstr-commercial-tenant-secondary.mstr-commercial-tenant-secondary",
+      "mappedBy": "phoneArea"
+    },
+    "mstr_landlord_secondaries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mstr-landlord-secondary.mstr-landlord-secondary",
+      "mappedBy": "lndNationality"
+    },
+    "lndPhone1Area": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mstr-landlord-secondary.mstr-landlord-secondary",
+      "mappedBy": "Phone1Area"
+    },
+    "lndPhone2Area": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mstr-landlord-secondary.mstr-landlord-secondary",
+      "mappedBy": "Phone2Area"
     }
   }
 }

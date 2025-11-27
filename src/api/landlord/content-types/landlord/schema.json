@@ -53,6 +53,12 @@
         "Active",
         "Inactive"
       ]
+    },
+    "mstr_landlord_secondary": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mstr-landlord-secondary.mstr-landlord-secondary",
+      "mappedBy": "landlord"
     }
   }
 }

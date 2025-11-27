@@ -47,6 +47,18 @@
         "Active",
         "Inactive"
       ]
+    },
+    "mstr_residential_tenant_secondary": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mstr-residential-tenant-secondary.mstr-residential-tenant-secondary",
+      "mappedBy": "tenant"
+    },
+    "mstr_commercial_tenant_secondary": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::mstr-commercial-tenant-secondary.mstr-commercial-tenant-secondary",
+      "mappedBy": "tenant"
     }
   }
 }
