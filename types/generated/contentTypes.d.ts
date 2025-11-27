@@ -592,6 +592,10 @@ export interface ApiBuildingBuilding extends Struct.CollectionTypeSchema {
       'api::building.building'
     > &
       Schema.Attribute.Private;
+    mstr_units: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-unit.mstr-unit'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1076,14 +1080,6 @@ export interface ApiMstrUnitApartmentMstrUnitApartment
       'api::mstr-unit-apartment.mstr-unit-apartment'
     > &
       Schema.Attribute.Private;
-    mstr_unit_shop: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::mstr-unit-shop.mstr-unit-shop'
-    >;
-    mstr_unit_villa: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::mstr-unit-villa.mstr-unit-villa'
-    >;
     publishedAt: Schema.Attribute.DateTime;
     ref_apartment_type: Schema.Attribute.Relation<
       'manyToOne',
@@ -1117,13 +1113,13 @@ export interface ApiMstrUnitShopMstrUnitShop
       'api::mstr-unit-shop.mstr-unit-shop'
     > &
       Schema.Attribute.Private;
+    mstr_unit: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::mstr-unit.mstr-unit'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     shopDoors: Schema.Attribute.Integer;
     shopFloors: Schema.Attribute.Decimal;
-    unit: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::mstr-unit-apartment.mstr-unit-apartment'
-    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1151,11 +1147,11 @@ export interface ApiMstrUnitVillaMstrUnitVilla
       'api::mstr-unit-villa.mstr-unit-villa'
     > &
       Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    unit: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::mstr-unit-apartment.mstr-unit-apartment'
+    mstr_unit: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::mstr-unit.mstr-unit'
     >;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1176,6 +1172,7 @@ export interface ApiMstrUnitMstrUnit extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    building: Schema.Attribute.Relation<'manyToOne', 'api::building.building'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1189,15 +1186,33 @@ export interface ApiMstrUnitMstrUnit extends Struct.CollectionTypeSchema {
       'oneToOne',
       'api::mstr-unit-apartment.mstr-unit-apartment'
     >;
+    mstr_unit_shops: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-unit-shop.mstr-unit-shop'
+    >;
+    mstr_unit_villas: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-unit-villa.mstr-unit-villa'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     ref_leasing_status: Schema.Attribute.Relation<
       'manyToOne',
       'api::ref-leasing-status.ref-leasing-status'
     >;
+    ref_unit_category: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::ref-unit-category.ref-unit-category'
+    >;
     unitCode: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    unitErpId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    unitFloor: Schema.Attribute.String;
+    unitFloorId: Schema.Attribute.String;
     unitName: Schema.Attribute.String & Schema.Attribute.Required;
+    unitRecordStatus: Schema.Attribute.Enumeration<['Active', 'Inactive']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1643,6 +1658,58 @@ export interface ApiRefTenantTypeRefTenantType
     mstr_tenants: Schema.Attribute.Relation<
       'oneToMany',
       'api::mstr-tenant.mstr-tenant'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRefUnitCategoryRefUnitCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'ref_unit_categories';
+  info: {
+    displayName: 'Ref Unit Category';
+    pluralName: 'ref-unit-categories';
+    singularName: 'ref-unit-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    code: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    label: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ref-unit-category.ref-unit-category'
+    >;
+    mstr_units: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mstr-unit.mstr-unit'
     >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -2254,6 +2321,7 @@ declare module '@strapi/strapi' {
       'api::ref-leasing-status.ref-leasing-status': ApiRefLeasingStatusRefLeasingStatus;
       'api::ref-nationality.ref-nationality': ApiRefNationalityRefNationality;
       'api::ref-tenant-type.ref-tenant-type': ApiRefTenantTypeRefTenantType;
+      'api::ref-unit-category.ref-unit-category': ApiRefUnitCategoryRefUnitCategory;
       'api::services-page.services-page': ApiServicesPageServicesPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

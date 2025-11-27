@@ -11,17 +11,17 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "unit": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::mstr-unit-apartment.mstr-unit-apartment",
-      "inversedBy": "mstr_unit_shop"
-    },
     "shopDoors": {
       "type": "integer"
     },
     "shopFloors": {
       "type": "decimal"
+    },
+    "mstr_unit": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mstr-unit.mstr-unit",
+      "inversedBy": "mstr_unit_shops"
     }
   }
 }

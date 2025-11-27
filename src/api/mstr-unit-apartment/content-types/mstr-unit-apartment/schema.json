@@ -31,18 +31,6 @@
       "relation": "oneToOne",
       "target": "api::mstr-unit.mstr-unit",
       "mappedBy": "mstr_unit_apartment"
-    },
-    "mstr_unit_shop": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::mstr-unit-shop.mstr-unit-shop",
-      "mappedBy": "unit"
-    },
-    "mstr_unit_villa": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::mstr-unit-villa.mstr-unit-villa",
-      "mappedBy": "unit"
     }
   }
 }

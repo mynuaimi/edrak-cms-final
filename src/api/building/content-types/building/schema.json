@@ -65,6 +65,12 @@
         "Active",
         "Inactive"
       ]
+    },
+    "mstr_units": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mstr-unit.mstr-unit",
+      "mappedBy": "building"
     }
   }
 }

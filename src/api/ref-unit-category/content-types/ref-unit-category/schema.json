@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ref_unit_categories",
+  "info": {
+    "singularName": "ref-unit-category",
+    "pluralName": "ref-unit-categories",
+    "displayName": "Ref Unit Category"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "code": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "unique": true
+    },
+    "label": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "unique": true
+    },
+    "mstr_units": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mstr-unit.mstr-unit",
+      "mappedBy": "ref_unit_category"
+    }
+  }
+}
