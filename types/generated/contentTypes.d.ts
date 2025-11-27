@@ -1114,7 +1114,7 @@ export interface ApiMstrUnitShopMstrUnitShop
     > &
       Schema.Attribute.Private;
     mstr_unit: Schema.Attribute.Relation<
-      'manyToOne',
+      'oneToOne',
       'api::mstr-unit.mstr-unit'
     >;
     publishedAt: Schema.Attribute.DateTime;
@@ -1148,7 +1148,7 @@ export interface ApiMstrUnitVillaMstrUnitVilla
     > &
       Schema.Attribute.Private;
     mstr_unit: Schema.Attribute.Relation<
-      'manyToOne',
+      'oneToOne',
       'api::mstr-unit.mstr-unit'
     >;
     publishedAt: Schema.Attribute.DateTime;
@@ -1186,12 +1186,12 @@ export interface ApiMstrUnitMstrUnit extends Struct.CollectionTypeSchema {
       'oneToOne',
       'api::mstr-unit-apartment.mstr-unit-apartment'
     >;
-    mstr_unit_shops: Schema.Attribute.Relation<
-      'oneToMany',
+    mstr_unit_shop: Schema.Attribute.Relation<
+      'oneToOne',
       'api::mstr-unit-shop.mstr-unit-shop'
     >;
-    mstr_unit_villas: Schema.Attribute.Relation<
-      'oneToMany',
+    mstr_unit_villa: Schema.Attribute.Relation<
+      'oneToOne',
       'api::mstr-unit-villa.mstr-unit-villa'
     >;
     publishedAt: Schema.Attribute.DateTime;

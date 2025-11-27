@@ -62,17 +62,17 @@
         "Inactive"
       ]
     },
-    "mstr_unit_shops": {
+    "mstr_unit_shop": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::mstr-unit-shop.mstr-unit-shop",
-      "mappedBy": "mstr_unit"
+      "inversedBy": "mstr_unit"
     },
-    "mstr_unit_villas": {
+    "mstr_unit_villa": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::mstr-unit-villa.mstr-unit-villa",
-      "mappedBy": "mstr_unit"
+      "inversedBy": "mstr_unit"
     }
   }
 }

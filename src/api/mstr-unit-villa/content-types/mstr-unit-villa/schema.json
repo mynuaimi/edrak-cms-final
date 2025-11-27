@@ -22,9 +22,9 @@
     },
     "mstr_unit": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToOne",
       "target": "api::mstr-unit.mstr-unit",
-      "inversedBy": "mstr_unit_villas"
+      "mappedBy": "mstr_unit_villa"
     }
   }
 }
