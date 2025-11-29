@@ -32,7 +32,7 @@
       }
     },
     "welcomeText": {
-      "type": "string",
+      "type": "blocks",
       "pluginOptions": {
         "i18n": {
           "localized": true

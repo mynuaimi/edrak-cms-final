@@ -765,7 +765,7 @@ export interface ApiEmpDashboardPageEmpDashboardPage
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    welcomeText: Schema.Attribute.String &
+    welcomeText: Schema.Attribute.Blocks &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
