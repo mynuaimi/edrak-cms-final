@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ref_colors",
+  "info": {
+    "singularName": "ref-color",
+    "pluralName": "ref-colors",
+    "displayName": "Ref Color"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ColorCode": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

@@ -118,6 +118,41 @@
           "localized": true
         }
       }
+    },
+    "designBackgroundColor": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::ref-color.ref-color"
+    },
+    "designSidebarBgColor": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::ref-color.ref-color"
+    },
+    "designHeroColorFrom": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::ref-color.ref-color"
+    },
+    "designHeroColorTo": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::ref-color.ref-color"
+    },
+    "designCardBgColor": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::ref-color.ref-color"
+    },
+    "designFontBody": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::ref-font.ref-font"
+    },
+    "designFontHeading": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::ref-font.ref-font"
     }
   }
 }

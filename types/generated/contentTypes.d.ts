@@ -738,6 +738,34 @@ export interface ApiEmpDashboardPageEmpDashboardPage
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    designBackgroundColor: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::ref-color.ref-color'
+    >;
+    designCardBgColor: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::ref-color.ref-color'
+    >;
+    designFontBody: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::ref-font.ref-font'
+    >;
+    designFontHeading: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::ref-font.ref-font'
+    >;
+    designHeroColorFrom: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::ref-color.ref-color'
+    >;
+    designHeroColorTo: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::ref-color.ref-color'
+    >;
+    designSidebarBgColor: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::ref-color.ref-color'
+    >;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1653,6 +1681,105 @@ export interface ApiRefApartmentTypeRefApartmentType
   };
 }
 
+export interface ApiRefColorRefColor extends Struct.CollectionTypeSchema {
+  collectionName: 'ref_colors';
+  info: {
+    displayName: 'Ref Color';
+    pluralName: 'ref-colors';
+    singularName: 'ref-color';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    ColorCode: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ref-color.ref-color'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRefFontRefFont extends Struct.CollectionTypeSchema {
+  collectionName: 'ref_fonts';
+  info: {
+    displayName: 'Ref Font';
+    pluralName: 'ref-fonts';
+    singularName: 'ref-font';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    FontName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ref-font.ref-font'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRefIconRefIcon extends Struct.CollectionTypeSchema {
+  collectionName: 'ref_icons';
+  info: {
+    displayName: 'Ref Icon';
+    pluralName: 'ref-icons';
+    singularName: 'ref-icon';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    iconName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ref-icon.ref-icon'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiRefLeasingStatusRefLeasingStatus
   extends Struct.CollectionTypeSchema {
   collectionName: 'ref_leasing_statuses';
@@ -2515,6 +2642,9 @@ declare module '@strapi/strapi' {
       'api::property-type.property-type': ApiPropertyTypePropertyType;
       'api::property.property': ApiPropertyProperty;
       'api::ref-apartment-type.ref-apartment-type': ApiRefApartmentTypeRefApartmentType;
+      'api::ref-color.ref-color': ApiRefColorRefColor;
+      'api::ref-font.ref-font': ApiRefFontRefFont;
+      'api::ref-icon.ref-icon': ApiRefIconRefIcon;
       'api::ref-leasing-status.ref-leasing-status': ApiRefLeasingStatusRefLeasingStatus;
       'api::ref-nationality.ref-nationality': ApiRefNationalityRefNationality;
       'api::ref-tenant-type.ref-tenant-type': ApiRefTenantTypeRefTenantType;

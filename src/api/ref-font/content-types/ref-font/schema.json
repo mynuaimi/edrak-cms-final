@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ref_fonts",
+  "info": {
+    "singularName": "ref-font",
+    "pluralName": "ref-fonts",
+    "displayName": "Ref Font"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "FontName": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
+      "unique": true
+    }
+  }
+}

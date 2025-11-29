@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ref_icons",
+  "info": {
+    "singularName": "ref-icon",
+    "pluralName": "ref-icons",
+    "displayName": "Ref Icon"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "iconName": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}
