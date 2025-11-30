@@ -1762,6 +1762,7 @@ export interface ApiRefColorRefColor extends Struct.CollectionTypeSchema {
     ColorCode: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    ColorName: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
