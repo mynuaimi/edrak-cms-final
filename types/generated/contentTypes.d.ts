@@ -944,7 +944,7 @@ export interface ApiEmpPortalNavEmpPortalNav extends Struct.SingleTypeSchema {
     logo: Schema.Attribute.Media<'images'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     navLabel: Schema.Attribute.DynamicZone<['web-emp.nav-link']> &
