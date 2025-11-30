@@ -70,6 +70,19 @@ export interface WebEmpDashboardCard extends Struct.ComponentSchema {
   };
 }
 
+export interface WebEmpNavLink extends Struct.ComponentSchema {
+  collectionName: 'components_web_emp_nav_links';
+  info: {
+    displayName: 'NavLink';
+  };
+  attributes: {
+    iconName: Schema.Attribute.Relation<'oneToMany', 'api::ref-icon.ref-icon'>;
+    label: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
+    path: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -78,6 +91,7 @@ declare module '@strapi/strapi' {
       'page-elements.value-entry': PageElementsValueEntry;
       'shared.menu-link': SharedMenuLink;
       'web-emp.dashboard-card': WebEmpDashboardCard;
+      'web-emp.nav-link': WebEmpNavLink;
     }
   }
 }

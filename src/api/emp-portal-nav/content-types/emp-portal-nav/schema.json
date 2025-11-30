@@ -15,14 +15,6 @@
     }
   },
   "attributes": {
-    "navDashboardLabel": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "navLabel": {
       "type": "dynamiczone",
       "pluginOptions": {
@@ -31,7 +23,7 @@
         }
       },
       "components": [
-        "shared.menu-link"
+        "web-emp.nav-link"
       ]
     },
     "languageLabelEn": {
@@ -49,6 +41,18 @@
           "localized": false
         }
       }
+    },
+    "logo": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

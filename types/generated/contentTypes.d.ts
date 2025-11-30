@@ -941,13 +941,13 @@ export interface ApiEmpPortalNavEmpPortalNav extends Struct.SingleTypeSchema {
       'oneToMany',
       'api::emp-portal-nav.emp-portal-nav'
     >;
-    navDashboardLabel: Schema.Attribute.String &
+    logo: Schema.Attribute.Media<'images'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    navLabel: Schema.Attribute.DynamicZone<['shared.menu-link']> &
+    navLabel: Schema.Attribute.DynamicZone<['web-emp.nav-link']> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

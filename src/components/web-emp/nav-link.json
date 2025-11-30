@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_web_emp_nav_links",
+  "info": {
+    "displayName": "NavLink"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "iconName": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ref-icon.ref-icon"
+    },
+    "order": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}
