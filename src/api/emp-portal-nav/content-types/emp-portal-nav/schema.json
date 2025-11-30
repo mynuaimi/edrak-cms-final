@@ -1,0 +1,54 @@
+{
+  "kind": "singleType",
+  "collectionName": "emp_portal_navs",
+  "info": {
+    "singularName": "emp-portal-nav",
+    "pluralName": "emp-portal-navs",
+    "displayName": "Emp Portal Nav"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "navDashboardLabel": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "navLabel": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "shared.menu-link"
+      ]
+    },
+    "languageLabelEn": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "languageLabelAr": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    }
+  }
+}

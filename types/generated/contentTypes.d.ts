@@ -899,6 +899,61 @@ export interface ApiEmpLoginPageEmpLoginPage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiEmpPortalNavEmpPortalNav extends Struct.SingleTypeSchema {
+  collectionName: 'emp_portal_navs';
+  info: {
+    displayName: 'Emp Portal Nav';
+    pluralName: 'emp-portal-navs';
+    singularName: 'emp-portal-nav';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    languageLabelAr: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    languageLabelEn: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::emp-portal-nav.emp-portal-nav'
+    >;
+    navDashboardLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    navLabel: Schema.Attribute.DynamicZone<['shared.menu-link']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
   collectionName: 'homepages';
   info: {
@@ -2626,6 +2681,7 @@ declare module '@strapi/strapi' {
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::emp-dashboard-page.emp-dashboard-page': ApiEmpDashboardPageEmpDashboardPage;
       'api::emp-login-page.emp-login-page': ApiEmpLoginPageEmpLoginPage;
+      'api::emp-portal-nav.emp-portal-nav': ApiEmpPortalNavEmpPortalNav;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::landlord.landlord': ApiLandlordLandlord;
       'api::main-menu.main-menu': ApiMainMenuMainMenu;

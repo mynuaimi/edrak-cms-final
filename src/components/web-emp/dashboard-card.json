@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_web_emp_dashboard_cards",
+  "info": {
+    "displayName": "Dashboard Card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "badgeText": {
+      "type": "string"
+    },
+    "iconName": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ref-icon.ref-icon"
+    },
+    "bgColor": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ref-color.ref-color"
+    },
+    "accentColor": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ref-color.ref-color"
+    },
+    "badgeColor": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ref-color.ref-color"
+    },
+    "useBuildingsCount": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

@@ -46,6 +46,30 @@ export interface SharedMenuLink extends Struct.ComponentSchema {
   };
 }
 
+export interface WebEmpDashboardCard extends Struct.ComponentSchema {
+  collectionName: 'components_web_emp_dashboard_cards';
+  info: {
+    displayName: 'Dashboard Card';
+  };
+  attributes: {
+    accentColor: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ref-color.ref-color'
+    >;
+    badgeColor: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ref-color.ref-color'
+    >;
+    badgeText: Schema.Attribute.String;
+    bgColor: Schema.Attribute.Relation<'oneToMany', 'api::ref-color.ref-color'>;
+    iconName: Schema.Attribute.Relation<'oneToMany', 'api::ref-icon.ref-icon'>;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    useBuildingsCount: Schema.Attribute.Boolean;
+    value: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -53,6 +77,7 @@ declare module '@strapi/strapi' {
       'page-elements.service-section': PageElementsServiceSection;
       'page-elements.value-entry': PageElementsValueEntry;
       'shared.menu-link': SharedMenuLink;
+      'web-emp.dashboard-card': WebEmpDashboardCard;
     }
   }
 }
