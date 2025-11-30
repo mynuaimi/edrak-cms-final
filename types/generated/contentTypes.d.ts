@@ -729,6 +729,12 @@ export interface ApiEmpDashboardPageEmpDashboardPage
           localized: true;
         };
       }>;
+    cards: Schema.Attribute.Component<'web-emp.dashboard-card', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     checkingAuthMessage: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

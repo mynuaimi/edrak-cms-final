@@ -153,6 +153,16 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::ref-font.ref-font"
+    },
+    "cards": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "web-emp.dashboard-card",
+      "repeatable": true
     }
   }
 }
