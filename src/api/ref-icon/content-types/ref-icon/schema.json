@@ -15,6 +15,32 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "label": {
+      "type": "string"
+    },
+    "iconPackage": {
+      "type": "enumeration",
+      "enum": [
+        "lucide",
+        "hero_outline",
+        "hero_solid",
+        "react_fa",
+        "react_gi",
+        "react_io",
+        "react_md",
+        "react_bs"
+      ]
+    },
+    "iconComponent": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
