@@ -783,6 +783,12 @@ export interface ApiEmpDashboardPageEmpDashboardPage
           localized: true;
         };
       }>;
+    NewWelcomeTextField: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     pageTitle: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -799,12 +805,6 @@ export interface ApiEmpDashboardPageEmpDashboardPage
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    welcomeText: Schema.Attribute.Blocks &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     welcomeTitle: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
