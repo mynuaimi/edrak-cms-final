@@ -1829,12 +1829,28 @@ export interface ApiRefIconRefIcon extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    category: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    iconComponent: Schema.Attribute.String;
     iconName: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    iconPackage: Schema.Attribute.Enumeration<
+      [
+        'lucide',
+        'hero_outline',
+        'hero_solid',
+        'react_fa',
+        'react_gi',
+        'react_io',
+        'react_md',
+        'react_bs',
+      ]
+    >;
+    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    label: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
