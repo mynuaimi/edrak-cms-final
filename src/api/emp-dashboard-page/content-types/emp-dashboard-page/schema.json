@@ -163,6 +163,14 @@
       },
       "component": "web-emp.dashboard-card",
       "repeatable": true
+    },
+    "welcomeText": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
