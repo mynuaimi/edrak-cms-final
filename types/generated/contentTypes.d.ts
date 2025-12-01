@@ -1818,6 +1818,48 @@ export interface ApiRefFontRefFont extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiRefIconPackageRefIconPackage
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'ref_icon_packages';
+  info: {
+    displayName: 'Ref Icon Package';
+    pluralName: 'ref-icon-packages';
+    singularName: 'ref-icon-package';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ref-icon-package.ref-icon-package'
+    > &
+      Schema.Attribute.Private;
+    packageCode: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    packageDescription: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    packageName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    packageSyntax: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    ref_icons: Schema.Attribute.Relation<'oneToMany', 'api::ref-icon.ref-icon'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiRefIconRefIcon extends Struct.CollectionTypeSchema {
   collectionName: 'ref_icons';
   info: {
@@ -1837,18 +1879,6 @@ export interface ApiRefIconRefIcon extends Struct.CollectionTypeSchema {
     iconName: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    iconPackage: Schema.Attribute.Enumeration<
-      [
-        'lucide',
-        'hero_outline',
-        'hero_solid',
-        'react_fa',
-        'react_gi',
-        'react_io',
-        'react_md',
-        'react_bs',
-      ]
-    >;
     isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     label: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -1857,6 +1887,10 @@ export interface ApiRefIconRefIcon extends Struct.CollectionTypeSchema {
       'api::ref-icon.ref-icon'
     > &
       Schema.Attribute.Private;
+    Package: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::ref-icon-package.ref-icon-package'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -2729,6 +2763,7 @@ declare module '@strapi/strapi' {
       'api::ref-apartment-type.ref-apartment-type': ApiRefApartmentTypeRefApartmentType;
       'api::ref-color.ref-color': ApiRefColorRefColor;
       'api::ref-font.ref-font': ApiRefFontRefFont;
+      'api::ref-icon-package.ref-icon-package': ApiRefIconPackageRefIconPackage;
       'api::ref-icon.ref-icon': ApiRefIconRefIcon;
       'api::ref-leasing-status.ref-leasing-status': ApiRefLeasingStatusRefLeasingStatus;
       'api::ref-nationality.ref-nationality': ApiRefNationalityRefNationality;

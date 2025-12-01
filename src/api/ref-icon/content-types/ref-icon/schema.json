@@ -19,18 +19,11 @@
     "label": {
       "type": "string"
     },
-    "iconPackage": {
-      "type": "enumeration",
-      "enum": [
-        "lucide",
-        "hero_outline",
-        "hero_solid",
-        "react_fa",
-        "react_gi",
-        "react_io",
-        "react_md",
-        "react_bs"
-      ]
+    "Package": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::ref-icon-package.ref-icon-package",
+      "inversedBy": "ref_icons"
     },
     "iconComponent": {
       "type": "string"

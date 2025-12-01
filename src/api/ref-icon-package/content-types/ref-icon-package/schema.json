@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ref_icon_packages",
+  "info": {
+    "singularName": "ref-icon-package",
+    "pluralName": "ref-icon-packages",
+    "displayName": "Ref Icon Package"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "packageCode": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "packageName": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "packageDescription": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "packageSyntax": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "ref_icons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ref-icon.ref-icon",
+      "mappedBy": "Package"
+    }
+  }
+}
