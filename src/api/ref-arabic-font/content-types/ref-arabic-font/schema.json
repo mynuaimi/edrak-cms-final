@@ -11,10 +11,30 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "FontCode": {
+      "type": "string"
+    },
     "FontName": {
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "FontFamilyCss": {
+      "type": "string"
+    },
+    "GoogleFontId": {
+      "type": "string"
+    },
+    "Weights": {
+      "type": "string"
+    },
+    "SourceType": {
+      "type": "string",
+      "default": "google"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
