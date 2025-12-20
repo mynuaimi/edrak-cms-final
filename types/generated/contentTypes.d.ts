@@ -1748,6 +1748,37 @@ export interface ApiRefApartmentTypeRefApartmentType
   };
 }
 
+export interface ApiRefArabicFontRefArabicFont
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'ref_arabic_fonts';
+  info: {
+    displayName: 'Ref Arabic Font';
+    pluralName: 'ref-arabic-fonts';
+    singularName: 'ref-arabic-font';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    FontName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ref-arabic-font.ref-arabic-font'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiRefColorRefColor extends Struct.CollectionTypeSchema {
   collectionName: 'ref_colors';
   info: {
@@ -1803,7 +1834,7 @@ export interface ApiRefFontRefFont extends Struct.CollectionTypeSchema {
       Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     locale: Schema.Attribute.String;
@@ -2761,6 +2792,7 @@ declare module '@strapi/strapi' {
       'api::property-type.property-type': ApiPropertyTypePropertyType;
       'api::property.property': ApiPropertyProperty;
       'api::ref-apartment-type.ref-apartment-type': ApiRefApartmentTypeRefApartmentType;
+      'api::ref-arabic-font.ref-arabic-font': ApiRefArabicFontRefArabicFont;
       'api::ref-color.ref-color': ApiRefColorRefColor;
       'api::ref-font.ref-font': ApiRefFontRefFont;
       'api::ref-icon-package.ref-icon-package': ApiRefIconPackageRefIconPackage;

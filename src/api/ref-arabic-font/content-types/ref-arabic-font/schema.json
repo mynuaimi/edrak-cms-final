@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ref_arabic_fonts",
+  "info": {
+    "singularName": "ref-arabic-font",
+    "pluralName": "ref-arabic-fonts",
+    "displayName": "Ref Arabic Font"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "FontName": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}
