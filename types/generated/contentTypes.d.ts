@@ -848,13 +848,13 @@ export interface ApiEmpLoginPageEmpLoginPage extends Struct.SingleTypeSchema {
     languageLabelAr: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     languageLabelEn: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     locale: Schema.Attribute.String;
