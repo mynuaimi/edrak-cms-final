@@ -118,6 +118,22 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "sideTitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "sideDescription": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
