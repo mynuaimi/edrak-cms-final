@@ -868,6 +868,12 @@ export interface ApiEmpLoginPageEmpLoginPage extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
+    logo: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     networkErrorMessage: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -887,6 +893,12 @@ export interface ApiEmpLoginPageEmpLoginPage extends Struct.SingleTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    sideImage: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     signingInLabel: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
