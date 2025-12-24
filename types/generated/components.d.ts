@@ -1,5 +1,16 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface EmpNavigationSidebarItem extends Struct.ComponentSchema {
+  collectionName: 'components_emp_navigation_sidebar_items';
+  info: {
+    displayName: 'SidebarItem';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface PageElementsServiceFeature extends Struct.ComponentSchema {
   collectionName: 'components_page_elements_service_features';
   info: {
@@ -86,6 +97,7 @@ export interface WebEmpNavLink extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'emp-navigation.sidebar-item': EmpNavigationSidebarItem;
       'page-elements.service-feature': PageElementsServiceFeature;
       'page-elements.service-section': PageElementsServiceSection;
       'page-elements.value-entry': PageElementsValueEntry;

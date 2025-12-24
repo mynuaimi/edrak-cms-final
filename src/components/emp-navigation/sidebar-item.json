@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_emp_navigation_sidebar_items",
+  "info": {
+    "displayName": "SidebarItem"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
