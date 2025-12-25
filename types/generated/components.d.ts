@@ -1,11 +1,35 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface EmpDashboardStatCard extends Struct.ComponentSchema {
+  collectionName: 'components_emp_dashboard_stat_cards';
+  info: {
+    displayName: 'StatCard';
+  };
+  attributes: {
+    icon: Schema.Attribute.Relation<'oneToOne', 'api::ref-icon.ref-icon'>;
+    label: Schema.Attribute.String;
+    metricKey: Schema.Attribute.String;
+  };
+}
+
+export interface EmpNavigationSidebarGroup extends Struct.ComponentSchema {
+  collectionName: 'components_emp_navigation_sidebar_groups';
+  info: {
+    displayName: 'SidebarGroup';
+  };
+  attributes: {
+    groupTitle: Schema.Attribute.String;
+    menuItems: Schema.Attribute.Component<'emp-navigation.sidebar-item', true>;
+  };
+}
+
 export interface EmpNavigationSidebarItem extends Struct.ComponentSchema {
   collectionName: 'components_emp_navigation_sidebar_items';
   info: {
     displayName: 'SidebarItem';
   };
   attributes: {
+    icon: Schema.Attribute.Relation<'oneToOne', 'api::ref-icon.ref-icon'>;
     label: Schema.Attribute.String;
     url: Schema.Attribute.String;
   };
@@ -97,6 +121,8 @@ export interface WebEmpNavLink extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'emp-dashboard.stat-card': EmpDashboardStatCard;
+      'emp-navigation.sidebar-group': EmpNavigationSidebarGroup;
       'emp-navigation.sidebar-item': EmpNavigationSidebarItem;
       'page-elements.service-feature': PageElementsServiceFeature;
       'page-elements.service-section': PageElementsServiceSection;

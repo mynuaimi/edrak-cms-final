@@ -670,6 +670,105 @@ export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiEmpDashboardEmpDashboard extends Struct.SingleTypeSchema {
+  collectionName: 'emp_dashboards';
+  info: {
+    displayName: 'Emp Dashboard';
+    pluralName: 'emp-dashboards';
+    singularName: 'emp-dashboard';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::emp-dashboard.emp-dashboard'
+    >;
+    pageTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    statsGrid: Schema.Attribute.DynamicZone<['emp-dashboard.stat-card']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    welcomeMessage: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+  };
+}
+
+export interface ApiEmpGlobalConfigEmpGlobalConfig
+  extends Struct.SingleTypeSchema {
+  collectionName: 'emp_global_configs';
+  info: {
+    displayName: 'Emp Global Config';
+    pluralName: 'emp-global-configs';
+    singularName: 'emp-global-config';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::emp-global-config.emp-global-config'
+    >;
+    logo: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    navigation: Schema.Attribute.DynamicZone<['emp-navigation.sidebar-group']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    siteName: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEmpLoginPageEmpLoginPage extends Struct.SingleTypeSchema {
   collectionName: 'emp_login_pages';
   info: {
@@ -2636,6 +2735,8 @@ declare module '@strapi/strapi' {
       'api::building-type.building-type': ApiBuildingTypeBuildingType;
       'api::building.building': ApiBuildingBuilding;
       'api::contact-page.contact-page': ApiContactPageContactPage;
+      'api::emp-dashboard.emp-dashboard': ApiEmpDashboardEmpDashboard;
+      'api::emp-global-config.emp-global-config': ApiEmpGlobalConfigEmpGlobalConfig;
       'api::emp-login-page.emp-login-page': ApiEmpLoginPageEmpLoginPage;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::landlord.landlord': ApiLandlordLandlord;

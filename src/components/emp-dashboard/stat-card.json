@@ -1,14 +1,14 @@
 {
-  "collectionName": "components_emp_navigation_sidebar_items",
+  "collectionName": "components_emp_dashboard_stat_cards",
   "info": {
-    "displayName": "SidebarItem"
+    "displayName": "StatCard"
   },
   "options": {},
   "attributes": {
     "label": {
       "type": "string"
     },
-    "url": {
+    "metricKey": {
       "type": "string"
     },
     "icon": {

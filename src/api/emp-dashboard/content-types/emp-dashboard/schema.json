@@ -1,0 +1,46 @@
+{
+  "kind": "singleType",
+  "collectionName": "emp_dashboards",
+  "info": {
+    "singularName": "emp-dashboard",
+    "pluralName": "emp-dashboards",
+    "displayName": "Emp Dashboard"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "pageTitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "welcomeMessage": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "statsGrid": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "emp-dashboard.stat-card"
+      ]
+    }
+  }
+}

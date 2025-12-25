@@ -1,0 +1,50 @@
+{
+  "kind": "singleType",
+  "collectionName": "emp_global_configs",
+  "info": {
+    "singularName": "emp-global-config",
+    "pluralName": "emp-global-configs",
+    "displayName": "Emp Global Config"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "siteName": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "logo": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "navigation": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "emp-navigation.sidebar-group"
+      ]
+    }
+  }
+}

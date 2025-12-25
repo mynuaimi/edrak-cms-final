@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_emp_navigation_sidebar_groups",
+  "info": {
+    "displayName": "SidebarGroup"
+  },
+  "options": {},
+  "attributes": {
+    "groupTitle": {
+      "type": "string"
+    },
+    "menuItems": {
+      "type": "component",
+      "component": "emp-navigation.sidebar-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
