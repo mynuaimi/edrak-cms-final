@@ -11,10 +11,11 @@
     "metricKey": {
       "type": "string"
     },
-    "icon": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::ref-icon.ref-icon"
+    "iconName": {
+      "type": "string"
+    },
+    "iconPackage": {
+      "type": "string"
     }
   },
   "config": {}

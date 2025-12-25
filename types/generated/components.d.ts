@@ -6,7 +6,8 @@ export interface EmpDashboardStatCard extends Struct.ComponentSchema {
     displayName: 'StatCard';
   };
   attributes: {
-    icon: Schema.Attribute.Relation<'oneToOne', 'api::ref-icon.ref-icon'>;
+    iconName: Schema.Attribute.String;
+    iconPackage: Schema.Attribute.String;
     label: Schema.Attribute.String;
     metricKey: Schema.Attribute.String;
   };
@@ -29,7 +30,8 @@ export interface EmpNavigationSidebarItem extends Struct.ComponentSchema {
     displayName: 'SidebarItem';
   };
   attributes: {
-    icon: Schema.Attribute.Relation<'oneToOne', 'api::ref-icon.ref-icon'>;
+    iconName: Schema.Attribute.String;
+    iconPackage: Schema.Attribute.String;
     label: Schema.Attribute.String;
     url: Schema.Attribute.String;
   };
