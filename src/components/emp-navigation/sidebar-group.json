@@ -12,6 +12,12 @@
       "type": "component",
       "component": "emp-navigation.sidebar-item",
       "repeatable": true
+    },
+    "iconName": {
+      "type": "string"
+    },
+    "iconPackage": {
+      "type": "string"
     }
   },
   "config": {}

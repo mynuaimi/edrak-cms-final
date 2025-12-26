@@ -20,6 +20,8 @@ export interface EmpNavigationSidebarGroup extends Struct.ComponentSchema {
   };
   attributes: {
     groupTitle: Schema.Attribute.String;
+    iconName: Schema.Attribute.String;
+    iconPackage: Schema.Attribute.String;
     menuItems: Schema.Attribute.Component<'emp-navigation.sidebar-item', true>;
   };
 }
