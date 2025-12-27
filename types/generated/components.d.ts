@@ -6,6 +6,7 @@ export interface DataManagementDataSetCard extends Struct.ComponentSchema {
     displayName: 'DataSetCard';
   };
   attributes: {
+    ApiID: Schema.Attribute.String & Schema.Attribute.Required;
     IconName: Schema.Attribute.String;
     IconPackage: Schema.Attribute.String;
     MetricLabel: Schema.Attribute.String;
