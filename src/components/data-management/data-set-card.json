@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_data_management_data_set_cards",
+  "info": {
+    "displayName": "DataSetCard"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Slug": {
+      "type": "string"
+    },
+    "IconName": {
+      "type": "string"
+    },
+    "IconPackage": {
+      "type": "string"
+    },
+    "MetricLabel": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

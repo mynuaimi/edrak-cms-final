@@ -1,5 +1,19 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface DataManagementDataSetCard extends Struct.ComponentSchema {
+  collectionName: 'components_data_management_data_set_cards';
+  info: {
+    displayName: 'DataSetCard';
+  };
+  attributes: {
+    IconName: Schema.Attribute.String;
+    IconPackage: Schema.Attribute.String;
+    MetricLabel: Schema.Attribute.String;
+    Slug: Schema.Attribute.String;
+    Title: Schema.Attribute.String;
+  };
+}
+
 export interface EmpDashboardStatCard extends Struct.ComponentSchema {
   collectionName: 'components_emp_dashboard_stat_cards';
   info: {
@@ -125,6 +139,7 @@ export interface WebEmpNavLink extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'data-management.data-set-card': DataManagementDataSetCard;
       'emp-dashboard.stat-card': EmpDashboardStatCard;
       'emp-navigation.sidebar-group': EmpNavigationSidebarGroup;
       'emp-navigation.sidebar-item': EmpNavigationSidebarItem;

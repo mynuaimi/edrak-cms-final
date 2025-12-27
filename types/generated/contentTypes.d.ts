@@ -1150,6 +1150,50 @@ export interface ApiMasterDataEntryMasterDataEntry
   };
 }
 
+export interface ApiMasterDataOverviewMasterDataOverview
+  extends Struct.SingleTypeSchema {
+  collectionName: 'master_data_overviews';
+  info: {
+    displayName: 'Master Data Overview';
+    pluralName: 'master-data-overviews';
+    singularName: 'master-data-overview';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    DataSets: Schema.Attribute.DynamicZone<['data-management.data-set-card']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::master-data-overview.master-data-overview'
+    >;
+    PageTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiMstrCommercialTenantRepresentativeMstrCommercialTenantRepresentative
   extends Struct.CollectionTypeSchema {
   collectionName: 'mstr_commercial_tenant_representatives';
@@ -2863,6 +2907,7 @@ declare module '@strapi/strapi' {
       'api::main-menu.main-menu': ApiMainMenuMainMenu;
       'api::master-data-category.master-data-category': ApiMasterDataCategoryMasterDataCategory;
       'api::master-data-entry.master-data-entry': ApiMasterDataEntryMasterDataEntry;
+      'api::master-data-overview.master-data-overview': ApiMasterDataOverviewMasterDataOverview;
       'api::mstr-commercial-tenant-representative.mstr-commercial-tenant-representative': ApiMstrCommercialTenantRepresentativeMstrCommercialTenantRepresentative;
       'api::mstr-commercial-tenant-secondary.mstr-commercial-tenant-secondary': ApiMstrCommercialTenantSecondaryMstrCommercialTenantSecondary;
       'api::mstr-landlord-secondary.mstr-landlord-secondary': ApiMstrLandlordSecondaryMstrLandlordSecondary;

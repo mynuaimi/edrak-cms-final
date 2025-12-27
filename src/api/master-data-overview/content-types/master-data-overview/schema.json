@@ -1,0 +1,38 @@
+{
+  "kind": "singleType",
+  "collectionName": "master_data_overviews",
+  "info": {
+    "singularName": "master-data-overview",
+    "pluralName": "master-data-overviews",
+    "displayName": "Master Data Overview"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "PageTitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "DataSets": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "data-management.data-set-card"
+      ]
+    }
+  }
+}
