@@ -1,0 +1,38 @@
+{
+  "kind": "singleType",
+  "collectionName": "transaction_overviews",
+  "info": {
+    "singularName": "transaction-overview",
+    "pluralName": "transaction-overviews",
+    "displayName": "Transaction Overview"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "PageTitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "TransactionSets": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "data-management.data-set-card"
+      ]
+    }
+  }
+}

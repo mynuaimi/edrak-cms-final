@@ -2385,6 +2385,52 @@ export interface ApiServicesPageServicesPage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiTransactionOverviewTransactionOverview
+  extends Struct.SingleTypeSchema {
+  collectionName: 'transaction_overviews';
+  info: {
+    displayName: 'Transaction Overview';
+    pluralName: 'transaction-overviews';
+    singularName: 'transaction-overview';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::transaction-overview.transaction-overview'
+    >;
+    PageTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    TransactionSets: Schema.Attribute.DynamicZone<
+      ['data-management.data-set-card']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -2931,6 +2977,7 @@ declare module '@strapi/strapi' {
       'api::ref-tenant-type.ref-tenant-type': ApiRefTenantTypeRefTenantType;
       'api::ref-unit-category.ref-unit-category': ApiRefUnitCategoryRefUnitCategory;
       'api::services-page.services-page': ApiServicesPageServicesPage;
+      'api::transaction-overview.transaction-overview': ApiTransactionOverviewTransactionOverview;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
