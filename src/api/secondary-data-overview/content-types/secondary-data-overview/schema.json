@@ -1,0 +1,38 @@
+{
+  "kind": "singleType",
+  "collectionName": "secondary_data_overviews",
+  "info": {
+    "singularName": "secondary-data-overview",
+    "pluralName": "secondary-data-overviews",
+    "displayName": "Secondary Data Overview"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "PageTitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "DataSets": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "data-management.data-set-card"
+      ]
+    }
+  }
+}

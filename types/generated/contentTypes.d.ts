@@ -2315,6 +2315,50 @@ export interface ApiRefUnitCategoryRefUnitCategory
   };
 }
 
+export interface ApiSecondaryDataOverviewSecondaryDataOverview
+  extends Struct.SingleTypeSchema {
+  collectionName: 'secondary_data_overviews';
+  info: {
+    displayName: 'Secondary Data Overview';
+    pluralName: 'secondary-data-overviews';
+    singularName: 'secondary-data-overview';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    DataSets: Schema.Attribute.DynamicZone<['data-management.data-set-card']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::secondary-data-overview.secondary-data-overview'
+    >;
+    PageTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiServicesPageServicesPage extends Struct.SingleTypeSchema {
   collectionName: 'services_pages';
   info: {
@@ -2976,6 +3020,7 @@ declare module '@strapi/strapi' {
       'api::ref-nationality.ref-nationality': ApiRefNationalityRefNationality;
       'api::ref-tenant-type.ref-tenant-type': ApiRefTenantTypeRefTenantType;
       'api::ref-unit-category.ref-unit-category': ApiRefUnitCategoryRefUnitCategory;
+      'api::secondary-data-overview.secondary-data-overview': ApiSecondaryDataOverviewSecondaryDataOverview;
       'api::services-page.services-page': ApiServicesPageServicesPage;
       'api::transaction-overview.transaction-overview': ApiTransactionOverviewTransactionOverview;
       'plugin::content-releases.release': PluginContentReleasesRelease;
