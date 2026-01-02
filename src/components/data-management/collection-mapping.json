@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_data_management_collection_mappings",
+  "info": {
+    "displayName": "CollectionMapping"
+  },
+  "options": {},
+  "attributes": {
+    "ApiID": {
+      "type": "string"
+    },
+    "Fields": {
+      "type": "json"
+    }
+  },
+  "config": {}
+}

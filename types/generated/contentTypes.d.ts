@@ -670,6 +670,38 @@ export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiDataSchemaConfigDataSchemaConfig
+  extends Struct.SingleTypeSchema {
+  collectionName: 'data_schema_configs';
+  info: {
+    displayName: 'Data Schema Config';
+    pluralName: 'data-schema-configs';
+    singularName: 'data-schema-config';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    CollectionMapping: Schema.Attribute.Component<
+      'data-management.collection-mapping',
+      true
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::data-schema-config.data-schema-config'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEmpDashboardEmpDashboard extends Struct.SingleTypeSchema {
   collectionName: 'emp_dashboards';
   info: {
@@ -2989,6 +3021,7 @@ declare module '@strapi/strapi' {
       'api::building-type.building-type': ApiBuildingTypeBuildingType;
       'api::building.building': ApiBuildingBuilding;
       'api::contact-page.contact-page': ApiContactPageContactPage;
+      'api::data-schema-config.data-schema-config': ApiDataSchemaConfigDataSchemaConfig;
       'api::emp-dashboard.emp-dashboard': ApiEmpDashboardEmpDashboard;
       'api::emp-global-config.emp-global-config': ApiEmpGlobalConfigEmpGlobalConfig;
       'api::emp-login-page.emp-login-page': ApiEmpLoginPageEmpLoginPage;
