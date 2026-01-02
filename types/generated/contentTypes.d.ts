@@ -670,38 +670,6 @@ export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiDataSchemaConfigDataSchemaConfig
-  extends Struct.SingleTypeSchema {
-  collectionName: 'data_schema_configs';
-  info: {
-    displayName: 'Data Schema Config';
-    pluralName: 'data-schema-configs';
-    singularName: 'data-schema-config';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    CollectionMapping: Schema.Attribute.Component<
-      'data-management.collection-mapping',
-      true
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::data-schema-config.data-schema-config'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiEmpDashboardEmpDashboard extends Struct.SingleTypeSchema {
   collectionName: 'emp_dashboards';
   info: {
@@ -1054,126 +1022,6 @@ export interface ApiMainMenuMainMenu extends Struct.SingleTypeSchema {
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::main-menu.main-menu'
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiMasterDataCategoryMasterDataCategory
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'master_data_categories';
-  info: {
-    displayName: 'Master Data Category';
-    pluralName: 'master-data-categories';
-    singularName: 'master-data-category';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    IconName: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    IconPackage: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::master-data-category.master-data-category'
-    >;
-    master_data_entries: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::master-data-entry.master-data-entry'
-    >;
-    MetricKey: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    publishedAt: Schema.Attribute.DateTime;
-    Slug: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Title: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiMasterDataEntryMasterDataEntry
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'master_data_entries';
-  info: {
-    displayName: 'Master Data Entry';
-    pluralName: 'master-data-entries';
-    singularName: 'master-data-entry';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    DataFields: Schema.Attribute.JSON &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    EntityName: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    entryStatus: Schema.Attribute.Enumeration<['Active', 'Under Maintenance']> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::master-data-entry.master-data-entry'
-    >;
-    master_data_category: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::master-data-category.master-data-category'
     >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -3021,15 +2869,12 @@ declare module '@strapi/strapi' {
       'api::building-type.building-type': ApiBuildingTypeBuildingType;
       'api::building.building': ApiBuildingBuilding;
       'api::contact-page.contact-page': ApiContactPageContactPage;
-      'api::data-schema-config.data-schema-config': ApiDataSchemaConfigDataSchemaConfig;
       'api::emp-dashboard.emp-dashboard': ApiEmpDashboardEmpDashboard;
       'api::emp-global-config.emp-global-config': ApiEmpGlobalConfigEmpGlobalConfig;
       'api::emp-login-page.emp-login-page': ApiEmpLoginPageEmpLoginPage;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::landlord.landlord': ApiLandlordLandlord;
       'api::main-menu.main-menu': ApiMainMenuMainMenu;
-      'api::master-data-category.master-data-category': ApiMasterDataCategoryMasterDataCategory;
-      'api::master-data-entry.master-data-entry': ApiMasterDataEntryMasterDataEntry;
       'api::master-data-overview.master-data-overview': ApiMasterDataOverviewMasterDataOverview;
       'api::mstr-commercial-tenant-representative.mstr-commercial-tenant-representative': ApiMstrCommercialTenantRepresentativeMstrCommercialTenantRepresentative;
       'api::mstr-commercial-tenant-secondary.mstr-commercial-tenant-secondary': ApiMstrCommercialTenantSecondaryMstrCommercialTenantSecondary;

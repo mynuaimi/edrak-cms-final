@@ -23,6 +23,9 @@
     "ApiID": {
       "type": "string",
       "required": true
+    },
+    "FormFields": {
+      "type": "json"
     }
   },
   "config": {}

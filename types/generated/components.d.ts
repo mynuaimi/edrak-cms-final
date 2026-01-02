@@ -1,17 +1,5 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface DataManagementCollectionMapping
-  extends Struct.ComponentSchema {
-  collectionName: 'components_data_management_collection_mappings';
-  info: {
-    displayName: 'CollectionMapping';
-  };
-  attributes: {
-    ApiID: Schema.Attribute.String;
-    Fields: Schema.Attribute.JSON;
-  };
-}
-
 export interface DataManagementDataSetCard extends Struct.ComponentSchema {
   collectionName: 'components_data_management_data_set_cards';
   info: {
@@ -19,6 +7,7 @@ export interface DataManagementDataSetCard extends Struct.ComponentSchema {
   };
   attributes: {
     ApiID: Schema.Attribute.String & Schema.Attribute.Required;
+    FormFields: Schema.Attribute.JSON;
     IconName: Schema.Attribute.String;
     IconPackage: Schema.Attribute.String;
     MetricLabel: Schema.Attribute.String;
@@ -152,7 +141,6 @@ export interface WebEmpNavLink extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'data-management.collection-mapping': DataManagementCollectionMapping;
       'data-management.data-set-card': DataManagementDataSetCard;
       'emp-dashboard.stat-card': EmpDashboardStatCard;
       'emp-navigation.sidebar-group': EmpNavigationSidebarGroup;
