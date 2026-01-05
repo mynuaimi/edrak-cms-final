@@ -27,7 +27,7 @@
       "type": "component",
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         }
       },
       "component": "data-management.data-set-card",

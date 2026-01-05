@@ -2221,7 +2221,7 @@ export interface ApiReferenceDataOverviewReferenceDataOverview
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     locale: Schema.Attribute.String;
