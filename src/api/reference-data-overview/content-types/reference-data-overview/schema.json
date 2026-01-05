@@ -1,0 +1,37 @@
+{
+  "kind": "singleType",
+  "collectionName": "reference_data_overviews",
+  "info": {
+    "singularName": "reference-data-overview",
+    "pluralName": "reference-data-overviews",
+    "displayName": "Reference Data Overview"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "PageTitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "DataSets": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "data-management.data-set-card",
+      "repeatable": true
+    }
+  }
+}

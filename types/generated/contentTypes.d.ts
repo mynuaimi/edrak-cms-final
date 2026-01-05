@@ -2195,6 +2195,53 @@ export interface ApiRefUnitCategoryRefUnitCategory
   };
 }
 
+export interface ApiReferenceDataOverviewReferenceDataOverview
+  extends Struct.SingleTypeSchema {
+  collectionName: 'reference_data_overviews';
+  info: {
+    displayName: 'Reference Data Overview';
+    pluralName: 'reference-data-overviews';
+    singularName: 'reference-data-overview';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    DataSets: Schema.Attribute.Component<
+      'data-management.data-set-card',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::reference-data-overview.reference-data-overview'
+    >;
+    PageTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSecondaryDataOverviewSecondaryDataOverview
   extends Struct.SingleTypeSchema {
   collectionName: 'secondary_data_overviews';
@@ -2898,6 +2945,7 @@ declare module '@strapi/strapi' {
       'api::ref-nationality.ref-nationality': ApiRefNationalityRefNationality;
       'api::ref-tenant-type.ref-tenant-type': ApiRefTenantTypeRefTenantType;
       'api::ref-unit-category.ref-unit-category': ApiRefUnitCategoryRefUnitCategory;
+      'api::reference-data-overview.reference-data-overview': ApiReferenceDataOverviewReferenceDataOverview;
       'api::secondary-data-overview.secondary-data-overview': ApiSecondaryDataOverviewSecondaryDataOverview;
       'api::services-page.services-page': ApiServicesPageServicesPage;
       'api::transaction-overview.transaction-overview': ApiTransactionOverviewTransactionOverview;
